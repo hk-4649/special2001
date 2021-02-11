@@ -1,0 +1,32 @@
+service: special2001
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: ap-northeast-1
+  stage: dev
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  hello:
+    handler: handler.publicHolidays
+    events:
+      - http:
+          path: publicHolidays
+          method: get
+          cors: true
+
+plugins:
+  - serverless-apigw-binary # for custom.apigwBinary
+  - serverless-offline
+
+custom:
+  apigwBinary:
+    types: #list of mime-types
+      - 'image/*'
+      - 'text/html'
+
