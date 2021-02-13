@@ -19,6 +19,13 @@ functions:
           path: publicHolidays
           method: get
           cors: true
+  image:
+    handler: handler.todaysImage
+    events:
+      - http:
+          path: todaysImage
+          method: post
+          cors: true
 
 plugins:
   - serverless-apigw-binary # for custom.apigwBinary
