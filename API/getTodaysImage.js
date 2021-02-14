@@ -31,6 +31,7 @@ const imageName = {
 
 module.exports.getTodaysImage = async(dateStr) => {
     try {
+        const date = new Date(dateStr);
         const publicHolidays = await getPublicHolidays();
         const yyyymmdd = formatDate(date);
         const publicHoliday = publicHolidays.find((e) => e.date === yyyymmdd);
@@ -41,7 +42,6 @@ module.exports.getTodaysImage = async(dateStr) => {
                 image_data: await getImage(image_name),
             };
         }
-        const date = new Date(dateStr);
         const day = date.getDay();
         // 土曜か日曜
         if (day === 0 || day === 6) {

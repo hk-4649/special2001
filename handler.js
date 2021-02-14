@@ -16,7 +16,7 @@ module.exports.todaysImage = async (event) => {
   const todaysImage = await getTodaysImage(date);
   return {
     statusCode: 200,
-    body: JSON.stringify({image: todaysImage}),
+    body: JSON.stringify(todaysImage),
   };
 };
 
