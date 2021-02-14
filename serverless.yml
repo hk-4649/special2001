@@ -26,6 +26,13 @@ functions:
           path: todaysImage
           method: post
           cors: true
+  imageTest:
+    handler: handler.responseImage
+    events:
+      - http:
+          path: image
+          method: get
+          cors: true
 
 plugins:
   - serverless-apigw-binary # for custom.apigwBinary

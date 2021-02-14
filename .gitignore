@@ -105,6 +105,4 @@ dist
 
 .serverless
 
-img/
-
 package-lock.json

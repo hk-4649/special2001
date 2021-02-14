@@ -1,9 +1,5 @@
 const request = require('request');
 
-const dt = new Date();
-const year = dt.getFullYear();
-const publicHolidaysHost = `https://holidays-jp.github.io/api/v1/${year}/date.json`;
-
 const requestEx = async (url) => {
     return new Promise((resolve, reject) => {
         request(url, (err, _, body) => {
@@ -16,6 +12,9 @@ const requestEx = async (url) => {
 };
 
 module.exports.getPublicHolidays = async() => {
+    const dt = new Date();
+    const year = dt.getFullYear();
+    const publicHolidaysHost = `https://holidays-jp.github.io/api/v1/${year}/date.json`;
     try {
         const holidaysJson = await requestEx(publicHolidaysHost);
         const holidays = JSON.parse(holidaysJson);
