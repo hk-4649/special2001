@@ -7,6 +7,9 @@ module.exports.publicHolidays = async (event) => {
   const publicHolidays = await getPublicHolidays();
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin' : '*',
+    },
     body: JSON.stringify(publicHolidays),
   };
 };
@@ -16,6 +19,9 @@ module.exports.todaysImage = async (event) => {
   const todaysImage = await getTodaysImage(date);
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin' : '*',
+    },
     body: JSON.stringify(todaysImage),
   };
 };
@@ -26,6 +32,7 @@ module.exports.responseImage = async (event) => {
   return {
     statusCode: 200,
     headers: {
+      'Access-Control-Allow-Origin' : '*',
       'Content-Type': 'image/png'
     },
     isBase64Encoded: true,
