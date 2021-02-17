@@ -7,10 +7,18 @@ const formatDate = (dt) => {
     const d = ('00' + dt.getDate()).slice(-2);
     return y + m + d;
 };
+const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const imageName = {
-    '休日': 'weekEnd.png',
-    '平日': 'weekDay.png',
+    '休日0': 'weekEnd.png',
+    '休日1': 'picnic.png',
+    '休日2': 'sports.png',
+    '休日3': 'dokusyo.png',
+    '平日0': 'weekDay.png',
+    '平日1': 'kaisya.png',
+    '平日2': 'skip.png',
+    '平日3': 'roudousya.png',
+    '平日4': 'sagyou.png',
     '元日': 'newYear.png',
     '成人の日': 'seijin.png',
     '建国記念の日': 'kenkoku.png',
@@ -45,13 +53,15 @@ module.exports.getTodaysImage = async(dateStr) => {
         const day = date.getDay();
         // 土曜か日曜
         if (day === 0 || day === 6) {
-            const image_name = imageName['休日'];
+            const n = getRandomInt(4);
+            const image_name = imageName[`休日${n}`];
             return {
                 image_name,
                 image_data: await getImage(image_name),
             };
         }
-        const image_name = imageName['平日'];
+        const n = getRandomInt(4);
+        const image_name = imageName[`平日${n}`];
         return {
             image_name,
             image_data: await getImage(image_name),
@@ -65,3 +75,4 @@ module.exports.getTodaysImage = async(dateStr) => {
         }
     };
 };
+console.log(getRandomInt(3))
